@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php 
+<?php
     session_start();
     $con = mysqli_connect("localhost","root","root","GradeManager","3306");
     if (!$con)
@@ -18,7 +18,6 @@
 <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <script src="../js/jquery-3.3.1.js"></script>
-<script src="./../js/grade_add.js"></script>
 
 <style>
   html,
@@ -38,11 +37,7 @@
   <div class="w3-bar w3-top w3-blue w3-large w3-card" style="z-index:4">
     <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();">
       <i class="fa fa-bars"></i>  Menu</button>
-    <span id="homePage" class="w3-bar-item w3-right w3-btn w3-text-white w3-wide" onclick="">
-      <i>
-        <strong>SUPERXZ</strong>
-      </i>
-    </span>
+    <span id = "homePage" class="w3-bar-item w3-right w3-btn w3-text-white w3-wide" onclick=""><i><strong>SUPERXZ</strong></i></span>
   </div>
 
   <!-- Sidebar/menu -->
@@ -56,8 +51,8 @@
         <span>
           <strong>欢迎您,
             <?php
-              if(isset($_SESSION['tname']) && isset($_SESSION['tid'])){
-                echo $_SESSION['tname'].'('.$_SESSION['tid'].')'; 
+              if(isset($_SESSION['name']) && isset($_SESSION['id'])){
+                echo $_SESSION['name'].'('.$_SESSION['id'].')'; 
               } else {
                 header("location:./login_teacher.html"); 
               }
@@ -78,19 +73,16 @@
     </div>
     <hr>
     <div class="w3-container">
-      <h5>
-        <strong>我的</strong>
-      </h5>
+      <h5><strong>我的</strong></h5>
     </div>
     <div class="w3-bar-block">
-      <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()"
-        title="close menu">
+      <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu">
         <i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-      <a href="./grade_teacher.php" class="w3-bar-item w3-button w3-padding">
+      <a href="./grade_admin.php" class="w3-bar-item w3-button w3-padding">
         <i class="fa fa-users fa-fw"></i>  成绩管理</a>
+      <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding">
+        <i class="fa fa-eye fa-fw"></i>  发布公告</a>
       <!-- <a href="./developing.php" class="w3-bar-item w3-button w3-padding">
-        <i class="fa fa-eye fa-fw"></i>  学籍信息</a>
-      <a href="./developing.php" class="w3-bar-item w3-button w3-padding">
         <i class="fa fa-users fa-fw"></i>  我的预警</a>
       <a href="./developing.php" class="w3-bar-item w3-button w3-padding">
         <i class="fa fa-bullseye fa-fw"></i>  我的课表</a>
@@ -191,6 +183,7 @@
         </div>
       </div>
     </div>
+
     <!-- End page content -->
   </div>
 
@@ -219,16 +212,15 @@
     }
 
     $(document).ready(function () {
-      $("#homePage").click(function (e) {
+      $("#homePage").click(function (e) { 
         e.preventDefault();
-        $(location).attr("href", "./welcome_teacher.php");
+        $(location).attr("href","./welcome_admin.php");
       });
     });
   </script>
 
 </body>
 <?php
-  mysqli_close($con);
+    mysqli_close($con);
 ?>
-
 </html>

@@ -1,12 +1,5 @@
 <!DOCTYPE html>
-<?php 
-    session_start();
-    $con = mysqli_connect("localhost","root","root","GradeManager","3306");
-    if (!$con)
-    {
-    die('Could not connect: ' . mysql_error());
-    }
-?>
+<?php session_start();?>
 <html>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +11,6 @@
 <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <script src="../js/jquery-3.3.1.js"></script>
-<script src="./../js/grade_add.js"></script>
 
 <style>
   html,
@@ -38,11 +30,7 @@
   <div class="w3-bar w3-top w3-blue w3-large w3-card" style="z-index:4">
     <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();">
       <i class="fa fa-bars"></i>  Menu</button>
-    <span id="homePage" class="w3-bar-item w3-right w3-btn w3-text-white w3-wide" onclick="">
-      <i>
-        <strong>SUPERXZ</strong>
-      </i>
-    </span>
+    <span id = "homePage" class="w3-bar-item w3-right w3-btn w3-text-white w3-wide" onclick=""><i><strong>SUPERXZ</strong></i></span>
   </div>
 
   <!-- Sidebar/menu -->
@@ -56,8 +44,8 @@
         <span>
           <strong>欢迎您,
             <?php
-              if(isset($_SESSION['tname']) && isset($_SESSION['tid'])){
-                echo $_SESSION['tname'].'('.$_SESSION['tid'].')'; 
+              if(isset($_SESSION['name']) && isset($_SESSION['id'])){
+                echo $_SESSION['name'].'('.$_SESSION['id'].')'; 
               } else {
                 header("location:./login_teacher.html"); 
               }
@@ -78,19 +66,16 @@
     </div>
     <hr>
     <div class="w3-container">
-      <h5>
-        <strong>我的</strong>
-      </h5>
+      <h5><strong>我的</strong></h5>
     </div>
     <div class="w3-bar-block">
-      <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()"
-        title="close menu">
+      <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu">
         <i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-      <a href="./grade_teacher.php" class="w3-bar-item w3-button w3-padding">
+      <a href="./grade_admin.php" class="w3-bar-item w3-button w3-padding">
         <i class="fa fa-users fa-fw"></i>  成绩管理</a>
+      <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding">
+        <i class="fa fa-eye fa-fw"></i>  发布公告</a>
       <!-- <a href="./developing.php" class="w3-bar-item w3-button w3-padding">
-        <i class="fa fa-eye fa-fw"></i>  学籍信息</a>
-      <a href="./developing.php" class="w3-bar-item w3-button w3-padding">
         <i class="fa fa-users fa-fw"></i>  我的预警</a>
       <a href="./developing.php" class="w3-bar-item w3-button w3-padding">
         <i class="fa fa-bullseye fa-fw"></i>  我的课表</a>
@@ -119,78 +104,42 @@
 
     <!-- Header -->
     <header class="w3-container" style="padding-top:22px">
-      <h5 class="w3-left">
+      <h5>
         <b>
-          <i class="fa fa-dashboard"></i> 成绩管理
-          <i class="fa fa-angle-right"></i> 锁定分数</b>
+          <i class="fa fa-dashboard"></i> 欢迎使用成绩管理系统，今天是 <?php echo date("Y-m-d")." ".date("l");?></b>
       </h5>
-      <button id="goback" class="w3-button w3-grey w3-hover-blue w3-round w3-hover-shadow w3-right">返回</button>
     </header>
 
     <div class="w3-container">
-      <table class="w3-table-all w3-centered">
-        <tr>
-          <th>学号</th>
-          <th>姓名</th>
-          <th>平时成绩</th>
-          <th>期末成绩</th>
-          <th>最终成绩</th>
-        </tr>
-        <?php
-          function _post($str){
-            $var = !empty($_POST[$str]) ? $_POST[$str] : null;
-            return $var;
-          }
-          echo '<input id="class" type="hidden" value="'._post('class').'">';
-          echo '<input id="cid" type="hidden" value="'._post('cid').'">';
-          $sql = "select sid,sname from student where sid like '____"._post('class')."%'";
-          $result = mysqli_query($con,$sql);
-          while ($array=mysqli_fetch_array($result)) {
-            echo "<tr>";
-            echo "<td>",$array['sid'],"</td>";
-            echo "<td>",$array['sname'],"</td>";
-            echo '<td><input class="w3-input w3-round" type="number" name="" id=""></td>';
-            echo '<td><input class="w3-input w3-round" type="number" name="" id=""></td>';
-            echo '<td><input class="w3-input w3-round" type="number" name="" id=""></td>';
-            echo "</tr>";
-          }
-        ?>
-      </table>
-
-      <div class="w3-margin" style="height:100px;">
-        <button id="submit_grade" class="w3-button w3-blue w3-hover-blue w3-round w3-hover-shadow w3-right">提交</button>
+      <h5>系统公告</h5>
+      <div class="w3-row">
+        <div class="w3-col m2 text-center">
+          <img class="w3-circle" src="./../images/avatar3.png" style="width:96px;height:96px">
+        </div>
+        <div class="w3-col m10 w3-container">
+          <h4>John
+            <span class="w3-opacity w3-medium">Sep 29, 2014, 9:12 PM</span>
+          </h4>
+          <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <br>
+        </div>
       </div>
 
-    </div>
-
-    <div id="promptInfoModal" class="w3-modal">
-      <div class="w3-modal-content w3-animate-bottom w3-card-4 w3-round w3-display-container" style="width: 360px;height: 200px;">
-        <div class="w3-display-middle w3-center">
-          <h5>确认要锁定分数吗？</h5>
+      <div class="w3-row">
+        <div class="w3-col m2 text-center">
+          <img class="w3-circle" src="./../images/avatar1.png" style="width:96px;height:96px">
         </div>
-        <div class="w3-container w3-display-bottommiddle w3-margin-bottom" style="width: 220px">
-          <button id="promptInfo_cancel" class="w3-button w3-blue w3-hover-blue w3-round w3-hover-shadow w3-left">取消</button>
-          <button id="promptInfo_ok" class="w3-button w3-blue w3-hover-blue w3-round w3-hover-shadow w3-right">确定</button>
+        <div class="w3-col m10 w3-container">
+          <h4>Bo
+            <span class="w3-opacity w3-medium">Sep 28, 2014, 10:15 PM</span>
+          </h4>
+          <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <br>
         </div>
       </div>
     </div>
 
-    <div id="waitingModal" class="w3-modal">
-      <div class="w3-modal-content w3-animate-bottom w3-card-4 w3-round w3-display-container" style="width: 360px;height: 200px;">
-        <div class="w3-display-middle w3-center">
-          <img class="w3-spin" src="./../images/gear.png" alt="上传中......">
-          <h3>上传中······</h3>
-        </div>
-      </div>
-    </div>
-
-    <div id="resultModal" class="w3-modal">
-      <div class="w3-modal-content w3-animate-bottom w3-card-4 w3-round w3-display-container" style="width: 360px;height: 200px;">
-        <div class="w3-display-middle w3-center">
-          <h3 id="resultInfo">上传成功！</h3>
-        </div>
-      </div>
-    </div>
     <!-- End page content -->
   </div>
 
@@ -219,16 +168,13 @@
     }
 
     $(document).ready(function () {
-      $("#homePage").click(function (e) {
+      $("#homePage").click(function (e) { 
         e.preventDefault();
-        $(location).attr("href", "./welcome_teacher.php");
+        $(location).attr("href","./welcome_admin.php");
       });
     });
   </script>
 
 </body>
-<?php
-  mysqli_close($con);
-?>
 
 </html>

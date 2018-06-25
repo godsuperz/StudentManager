@@ -213,7 +213,7 @@
                             $sql = "select * from schedule where tid='".$_SESSION['tid']."' and islocked=1";
                             $result = mysqli_query($con,$sql);
                             while ($array=mysqli_fetch_array($result)) {
-                                echo '<li class="lock w3-padding-16 w3-hover-shadow w3-round-large">';
+                                echo '<li class="w3-padding-16 w3-hover-shadow w3-round-large">';
                                 echo '<img src="./../images/school_material.png" class="w3-left w3-margin-right" style="width:35px">';
                                 $major = substr($array['class'],0,3);
                                 $class = substr($array['class'],3,2);
