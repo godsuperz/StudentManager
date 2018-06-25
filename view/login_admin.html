@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="../images/student.ico" type="image/x-icon">
+    <title>管理员登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/w3.css" />
+    <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="../js/jquery-3.3.1.js"></script>
+    <style>
+        html,
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: "RobotoDraft", "Roboto", sans-serif, "微软雅黑"
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(255, 254, 173);
+        }
+
+        .w3-bar-block .w3-bar-item {
+            padding: 16px
+        }
+    </style>
+</head>
+
+<body>
+    <!-- top title -->
+    <div class="w3-container w3-top w3-amber w3-card">
+        <h4>
+            <i class="fa fa-graduation-cap"></i> 管理员登录</h4>
+    </div>
+    <div class="w3-display-container" style="width: 100%;height: 100%;">
+        <div class="w3-display-middle w3-round-large w3-hover-shadow" style="background-color: rgba(255, 255, 255, 0.6);width: 30%;height: 36%;">
+            <div class="w3-panel w3-center">
+                <label id="promptInfo"></label>
+            </div>
+            <form id="loginStudent" action="" method="POST" class="w3-container w3-text-blue">
+                <h2 class="w3-center w3-wide"></h2>
+
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px">
+                        <i class="w3-xxlarge fa fa-user"></i>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border w3-round" name="first" type="text" placeholder="帐号">
+                    </div>
+                </div>
+
+                <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px">
+                        <i class="w3-xxlarge fa fa-lock"></i>
+                    </div>
+                    <div class="w3-rest">
+                        <input class="w3-input w3-border w3-round" name="last" type="text" placeholder="密码">
+                    </div>
+                </div>
+                <button class="w3-button w3-block w3-section w3-round w3-blue w3-ripple w3-padding w3-wide">登录</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>

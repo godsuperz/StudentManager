@@ -1,0 +1,11 @@
+$(document).ready(function(){
+    $("#admin").click(function(){
+        $(location).attr("href","./view/login_admin.html");
+    })
+    $("#student").click(function(){
+        $(location).attr("href","./view/login_student.html");
+    })
+    $("#teacher").click(function(){
+        $(location).attr("href","./view/login_teacher.html");
+    })
+})

@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>信息查询界面</title>
+    <style type="text/css">
+        a {
+            text-decoration: none;
+            font-size: 25px;
+            font-family: 微软雅黑;
+            color: rgb(98, 94, 91);
+        }
+
+        a:link {
+            color: #00FFFF;
+        }
+
+        /*未访问的颜色 蓝色*/
+
+        a:hover {
+            color: #FF00FF;
+        }
+
+        /*鼠标放上去的颜色(没起作用) 紫色*/
+
+        a:visited {
+            color: #00FFFF;
+        }
+
+        /*访问过的颜色 蓝色*/
+
+        a:active {
+            color: #FF00FF;
+        }
+
+        /*选定的代码 紫色*/
+    </style>
+</head>
+<!--这是学生端的查询界面，不提供返回管理员页面的接口-->
+
+<body>
+    <div style="font-size:25px;font-family:微软雅黑;color:rgb(98,94,91);" align="center">
+        <p>请输入学生的学号进行查询操作</p>
+        <p>如果要查询所有学生信息请输入“所有”进行查询</p>
+    </div>
+    <div style="height:180px;width:180px;margin:0px auto;" align="right">
+        <p sytle="text-align:center;">
+            <img src="../captche/pic0.jpg" width="160" height="160" align="right" />
+        </p>
+    </div>
+    <form action="select_opt_stu.php" method="post" style="margin: 35px auto;padding:30px;box-shadow: 1px 1px 2px 1px #aaaaaa;border-radius: 3px;width:380px;">
+        <input type="text" name="check" style="background-color: rgb(250, 255, 189) !important; border-radius: 3px;box-shadow: none; color: rgb(0, 0, 0);line-height: 26px;width:240px;"
+            placeholder="请输入要查询学生的学号">
+
+        <input type="submit" value="查询" style="height : 36px;border:1px;background-color:#00bee7;color:#fff;width:72px;border-radius: 3px;">
+    </form>
+
+</body>
+
+</html>
